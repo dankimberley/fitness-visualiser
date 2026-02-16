@@ -34,7 +34,7 @@ function App() {
   const getChartData = (activities: Activity[]) => {
     return activities.map(activity => ({
       date: activity.date,
-      distance: activity.distance
+      distance: Number(activity.distance) / 1000
     }))
   }
 
@@ -46,7 +46,7 @@ function App() {
         <ul>
           {activities.map((activity) => (
             <li key={activity.id}>
-              {activity.date} - {activity.type} - {activity.distance}km
+              {activity.date} - {activity.type} - {activity.distance}m
             </li>
           ))}
         </ul>

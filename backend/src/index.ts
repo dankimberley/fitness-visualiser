@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import fs from "fs/promises";
 import { parse } from "csv-parse/sync";
+import { getWeek} from 'date-fns'
 
 type StravaRecord = {
   'Activity ID': string;
@@ -38,13 +39,17 @@ app.get("/api/activities", async (req, res) => {
           activity["Activity Type"] === "Run" ||
           activity["Activity Type"] === "Ride",
       )
-      .map((activity: StravaRecord, index: number) => ({
-        id: index + 1,
-        date: new Date(activity['Activity Date']).toISOString().split('T')[0],
-        type: activity["Activity Type"],
-        distance: parseFloat(activity["Distance"]) || 0,
-        duration: parseInt(activity["Moving Time"]) || 0,
-      }));
+      .map((activity: StravaRecord, index: number) => {
+        const activityDate = new Date(activity['Activity Date']);
+        return {
+          id: index + 1,
+          date: activityDate.toISOString().split('T')[0],
+          week: getWeek(activityDate, { weekStartsOn: 1 }),
+          type: activity["Activity Type"],
+          distance: parseFloat(activity["Distance"]) || 0,
+          duration: parseInt(activity["Moving Time"]) || 0,
+        };
+      });
     res.json(processed);
   } catch {
     res.status(500).json({ error: "Failed to read activities" });
