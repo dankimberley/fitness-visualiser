@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 
 type Activity = {
   id: number;
@@ -49,7 +50,13 @@ function App() {
             </li>
           ))}
         </ul>
-        <p>{JSON.stringify(getChartData(activities))}</p>
+        <BarChart width={600} height={300} data={getChartData(activities)}>
+          <CartesianGrid />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="distance" fill="#8884d8" />
+        </BarChart>
       </div>
     </>
   );
