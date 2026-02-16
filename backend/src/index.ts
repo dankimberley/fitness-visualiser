@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import fs from "fs/promises";
 import { parse } from "csv-parse/sync";
-import { getWeek} from 'date-fns'
+import { getWeek, getYear } from 'date-fns'
 
 type StravaRecord = {
   'Activity ID': string;
@@ -44,7 +44,7 @@ app.get("/api/activities", async (req, res) => {
         return {
           id: index + 1,
           date: activityDate.toISOString().split('T')[0],
-          week: getWeek(activityDate, { weekStartsOn: 1 }),
+          week: `${getYear(activityDate)}-${getWeek(activityDate, { weekStartsOn: 1 })}`,
           type: activity["Activity Type"],
           distance: parseFloat(activity["Distance"]) || 0,
           duration: parseInt(activity["Moving Time"]) || 0,
