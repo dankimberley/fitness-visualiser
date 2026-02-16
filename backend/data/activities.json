@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "date": "2024-01-15",
+    "type": "Run",
+    "distance": 5.2,
+    "duration": 1680,
+    "elevation_gain": 45,
+    "average_heart_rate": 152,
+    "average_speed": 11.1
+  },
+  {
+    "id": 2,
+    "date": "2024-01-18",
+    "type": "Run",
+    "distance": 8.5,
+    "duration": 2820,
+    "average_heart_rate": 148,
+    "elevation_gain": 78,
+    "average_speed": 10.8
+  },
+  {
+    "id": 3,
+    "date": "2024-01-22",
+    "type": "Ride",
+    "distance": 32.4,
+    "duration": 5400,
+    "elevation_gain": 320,
+    "average_heart_rate": 138,
+    "average_speed": 21.6
+  },
+  {
+    "id": 4,
+    "date": "2024-01-25",
+    "type": "Run",
+    "distance": 6.8,
+    "duration": 2160,
+    "elevation_gain": 52,
+    "average_heart_rate": 155,
+    "average_speed": 11.3
+  },
+  {
+    "id": 5,
+    "date": "2024-01-29",
+    "type": "Run",
+    "distance": 10.0,
+    "duration": 3300,
+    "elevation_gain": 95,
+    "average_heart_rate": 150,
+    "average_speed": 10.9
+  }
+]
